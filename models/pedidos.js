@@ -1,7 +1,6 @@
 import mongoose from'mongoose';
 import moment from 'moment';
 const data = moment(new Date()).format('DD/MM/YYYY');
-// console.log(data)
 
 const pedidosSchema = new mongoose.Schema(
   
