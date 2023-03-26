@@ -1,5 +1,5 @@
 import express from "express";
-import connectDatabase from "./database/db.js";
+import mongoose from "mongoose";
 import pedidos from './models/pedidos.js'
 
 const app = express();
@@ -17,6 +17,8 @@ app.post("/pushpedidos", async (req, res)=>{
   return res.json(newPedido);
 });
 
-connectDatabase().then(()=>{console.log("bd connected")}).catch(()=>{console.log("Deu ruin")})
+mongoose.connect('mongodb+srv://root:Jonathas001@cluster0.vmkcvsj.mongodb.net/?retryWrites=true&w=majority')
+.then(()=>{console.log("bd connected")})
+.catch(()=>{console.log("Deu ruin")})
 
 app.listen(3000)
