@@ -10,7 +10,7 @@ app.get("/pedidos", async (req, res)=>{
   return res.status(200).json(pedido)
 })
 
-app.post("/pedidos", async (req, res)=>{
+app.post("/pushpedidos", async (req, res)=>{
   const pedido = req.body
   const newPedido = await pedidos.create(pedido)
 
