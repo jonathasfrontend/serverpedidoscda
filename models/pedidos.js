@@ -1,6 +1,11 @@
 import mongoose from'mongoose';
+import moment from 'moment';
+const data = moment(new Date()).format('DD/MM/YYYY');
+// console.log(data)
 
-const pedidosSchema = new mongoose.Schema({
+const pedidosSchema = new mongoose.Schema(
+  
+  {
     name:{
       type: String,
       require: true
@@ -14,9 +19,10 @@ const pedidosSchema = new mongoose.Schema({
       require: true
     },
     createdAt:{
-      type: Date,
-      default: Date.now()
+      type: String,
+      default: data
     }
-})
+}
+)
 
 export default mongoose.model('Pedidos',pedidosSchema)
