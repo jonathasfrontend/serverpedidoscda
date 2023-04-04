@@ -17,6 +17,12 @@ app.post("/pushpedidos", async (req, res)=>{
   return res.json(newPedido);
 });
 
+app.get('/deletaroracao/:id',(req,res)=>{
+  Posts.deleteOne({_id:req.params.id}).then(function(){
+      res.redirect('/');
+  })
+})
+
 mongoose.connect('mongodb+srv://root:Jonathas001@cluster0.vmkcvsj.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{console.log("bd connected")})
 .catch(()=>{console.log("Deu ruin")})
