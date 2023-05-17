@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import pedidos from './models/pedidos.js'
+import usercdm from './models/userscdm.js'
 
 const app = express();
 app.use(express.json());
@@ -9,11 +10,20 @@ app.get("/pedidos", async (req, res)=>{
   const pedido = await pedidos.find()
   return res.status(200).json(pedido)
 })
+app.get("/userscursodemembresia", async (req, res)=>{
+  const userscdm = await usercdm.find()
+  return res.status(200).json(userscdm)
+})
+
+app.post("/adduserscursodemembresia", async (req, res)=>{
+  const userscdm = req.body
+  const newUsercdm = await usercdm.create(userscdm)
+  return res.json(newUsercdm);
+});
 
 app.post("/pushpedidos", async (req, res)=>{
   const pedido = req.body
   const newPedido = await pedidos.create(pedido)
-
   return res.json(newPedido);
 });
 
