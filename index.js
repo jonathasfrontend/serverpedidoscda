@@ -2,9 +2,22 @@ import express from "express";
 import mongoose from "mongoose";
 import pedidos from './models/pedidos.js'
 import usercdm from './models/userscdm.js'
+import noticias from "./models/noticias.js";
+
 
 const app = express();
 app.use(express.json());
+
+app.get("/post", async (req, res)=>{
+  const noticia = await noticias.find()
+  return res.status(200).json(noticia)
+})
+app.post("/post-add", async (req, res)=>{
+  const postnoticia = req.body
+  const newNoticia = await noticias.create(postnoticia);
+  return res.status(200).json(newNoticia);
+})
+
 
 app.get("/pedidos", async (req, res)=>{
   const pedido = await pedidos.find()
@@ -37,4 +50,4 @@ mongoose.connect('mongodb+srv://root:Jonathas001@cluster0.vmkcvsj.mongodb.net/?r
 .then(()=>{console.log("bd connected")})
 .catch(()=>{console.log("Deu ruin")})
 
-app.listen(3000)
+app.listen(4000)
