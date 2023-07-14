@@ -1,6 +1,6 @@
 import mongoose from'mongoose';
 import moment from 'moment';
-const data = moment(new Date()).format('MMMM ,DD/MM/YYYY, h:mm');
+const data = moment(new Date()).format('LL h:mm');
 
 const PostSchema = new mongoose.Schema(
 
