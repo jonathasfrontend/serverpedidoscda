@@ -12,6 +12,14 @@ app.get("/post", async (req, res)=>{
   const noticia = await noticias.find()
   return res.status(200).json(noticia)
 })
+// app.get("/post/:id", async (req, res)=>{
+//   const { id } = req.params;
+
+//   const noticia = await noticias.find( post => post.id === Number(id) )
+
+//   return res.status(200).json(noticia)
+
+// })
 app.post("/post-add", async (req, res)=>{
   const postnoticia = req.body
   const newNoticia = await noticias.create(postnoticia);
