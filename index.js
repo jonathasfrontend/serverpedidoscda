@@ -50,7 +50,7 @@ app.post("/pushpedidos", async (req, res)=>{
 
 app.get('/deletaroracao/:id',(req,res)=>{
   pedidos.deleteOne({_id:req.params.id}).then(function(){
-      res.redirect('https://www.casadeadoracao.net.br/oracoes');
+      res.redirect('https://admincasadeadoracao.vercel.app/oracoes');
   })
 })
 
