@@ -4,6 +4,7 @@ import pedidos from './models/pedidos.js'
 import usercdm from './models/userscdm.js'
 import noticias from "./models/noticias.js";
 import contatos from "./models/contatos.js";
+import categoria from "./models/categoria.js";
 
 
 const app = express();
@@ -13,24 +14,30 @@ app.get("/post", async (req, res)=>{
   const noticia = await noticias.find()
   return res.status(200).json(noticia)
 })
-
 app.post("/post-add", async (req, res)=>{
   const postnoticia = req.body
   const newNoticia = await noticias.create(postnoticia);
   return res.status(200).json(newNoticia);
 })
-
 app.get("/ver-contatos", async (req, res)=>{
   const contato = await contatos.find()
   return res.status(200).json(contato)
 })
-
 app.post("/contatos-add", async (req, res)=>{
   const postcontatos = req.body
   const newContatos = await contatos.create(postcontatos);
   return res.status(200).json(newContatos);
 })
 
+app.get("/categoria", async (req, res)=>{
+  const categorias = await categoria.find()
+  return res.status(200).json(categorias)
+})
+app.post("/add-categoria", async (req, res)=>{
+  const addCategoria = req.body
+  const newCategoria = await categoria.create(addCategoria);
+  return res.status(200).json(newCategoria);
+})
 
 app.get("/pedidos", async (req, res)=>{
   const pedido = await pedidos.find()
